@@ -48,7 +48,7 @@ export async function POST(request) {
 		: defaultType;
 
 
-	const up_url = `https://api.telegram.org/bot${env.TG_BOT_TOKEN}/${endpoint}`;
+	const up_url = `https://${env.TG_API_URL}/bot${env.TG_BOT_TOKEN}/${endpoint}`;
 	let newformData = new FormData();
 	newformData.append("chat_id", env.TG_CHAT_ID);
 	newformData.append(fileTypevalue, formData.get('file'));
@@ -135,7 +135,7 @@ export async function POST(request) {
 
 async function getFile_path(env, file_id) {
 	try {
-		const url = `https://api.telegram.org/bot${env.TG_BOT_TOKEN}/getFile?file_id=${file_id}`;
+		const url = `https://${env.TG_API_URL}/bot${env.TG_BOT_TOKEN}/getFile?file_id=${file_id}`;
 		const res = await fetch(url, {
 			method: 'GET',
 			headers: {
