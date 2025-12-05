@@ -107,7 +107,7 @@ export async function GET(request, { params }) {
         })
 
     } else {
-      const res = await fetch(`https://api.telegram.org/file/bot${env.TG_BOT_TOKEN}/${file_path}`, {
+      const res = await fetch(`https://${env.TG_API_URL}/file/bot${env.TG_BOT_TOKEN}/${file_path}`, {
         method: request.method,
         headers: request.headers,
         body: request.body,
@@ -173,7 +173,7 @@ export async function GET(request, { params }) {
 
 async function getFile_path(env, file_id) {
   try {
-    const url = `https://api.telegram.org/bot${env.TG_BOT_TOKEN}/getFile?file_id=${file_id}`;
+    const url = `https://${env.TG_API_URL}/bot${env.TG_BOT_TOKEN}/getFile?file_id=${file_id}`;
     const res = await fetch(url, {
       method: 'GET',
       headers: {
